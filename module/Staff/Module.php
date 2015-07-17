@@ -32,9 +32,6 @@ class Module
     public function getServiceConfig()
     {
         return array(
-            'invokables' => array(
-                'nickel_form_hydrator' => 'Zend\Stdlib\Hydrator\ClassMethods'
-            ),
             'factories' => array(
                 'nickel_staff_service' => function($sm) {
                     $service = new Service\Staff;
@@ -43,18 +40,19 @@ class Module
                 },
                 'nickel_staff_mapper' => function($sm) {
                     $mapper = new Model\Staff\StaffMapper;
-                    $staffModelClass = Module::getOption('staff_model_class');
-                    $mapper->setEntityPrototype(new $staffModelClass);
-                    $mapper->setHydrator(new \Zend\Stdlib\Hydrator\ClassMethods);
+                    $mapper->setEntityPrototype($sm->get('nickel_staff'));
+                    $mapper->setHydrator(new \Staff\Model\Staff\StaffHydrator('Y-m-d'));
                     return $mapper;
                 },
                 'nickel_staff_form' => function ($sm) {
                     $form = new Form\StaffForm();
                     $form->setInputFilter(new Form\StaffFilter());
+                    $form->setHydrator(new \Staff\Model\Staff\StaffHydrator('d/m/Y'));
                     return $form;
                 },
                 'nickel_staff' => function($sm) {
-                    return new Model\Staff\Staff;
+                    $staffModelClass = Module::getOption('staff_model_class');
+                    return new $staffModelClass;
                 },
             ),
             'initializers' => array(

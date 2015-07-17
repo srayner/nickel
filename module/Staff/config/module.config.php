@@ -47,5 +47,10 @@ return array(
         ),
     ),
     
+    // Nickel config
+    'nickel_staff' => array(
+        'staff_model_class' => 'Staff\Model\Staff\Staff'
+    )
+    
 );
 

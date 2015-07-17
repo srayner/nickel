@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('Cobalt')?>
+        <?php echo $this->headTitle('Nickel')?>
 
         <?php echo $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
@@ -12,11 +12,11 @@
 
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css') ?>
+                        ->prependStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+                        ->appendStylesheet('/css/bootstrap-datetimepicker.min.css'); ?>
 
         <!-- Scripts -->
-        <?php echo $this->headScript()
-                        ->prependFile('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')?>
+        <?php echo $this->headScript() ?>
 
     </head>
     <body style="padding: 70px;">
@@ -28,7 +28,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>" style="padding: 10px 15px;"><img style="display: inline;" src="/img/cobalt-logo.png" alt="Cobalt"/>&nbsp;Cobalt Application</a>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>" style="padding: 10px 15px;"><img style="display: inline;" src="/img/cobalt-logo.png" alt="Cobalt"/>&nbsp;Nickel Application</a>
                     
                 </div>
                 <div class="collapse navbar-collapse">
@@ -45,6 +45,10 @@
                 <p>&copy; 2005 - <?php echo date('Y') ?> by S Rayner. <?php echo $this->translate('All rights reserved.') ?></p>
             </footer>
         </div> <!-- /container -->
+        
+        <!-- Body scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <?php echo $this->inlineScript() ?>
     </body>
 </html>

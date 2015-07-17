@@ -54,9 +54,16 @@ class Staff implements ServiceManagerAwareInterface
     {
         return $this->staffMapper->getStaffById($staffId);
     }
+
+    public function deleteStaffById($staffId)
+    {
+        $this->staffMapper->deleteStaffById($staffId);
+        return $this;
+    }
     
     public function persist($staff)
     {
-        return $this->staffMapper->persist($staff);
+        $this->staffMapper->persist($staff);
+        return $this;
     }
 }

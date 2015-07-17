@@ -3,7 +3,6 @@
 namespace Staff\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
@@ -19,37 +18,33 @@ class IndexController extends AbstractActionController
     
     public function indexAction()
     {
-        return new ViewModel();
+        return array(
+            'staff' => $this->getStaffService()->getStaff()
+        );
     }
     
     public function addAction()
     {
-        // Create new form and hydrator instances.
+        // Create new form instance.
         $form = $this->getServiceLocator()->get('nickel_staff_form');
-        $formHydrator = $this->getServiceLocator()->get('nickel_form_hydrator');
-         
+        
         // Check if the request is a POST.
         $request = $this->getRequest();
         if ($request->isPost())
         {
-            // POST, so check if valid.
-            $data = (array) $request->getPost();
-          
-            // Create a new staff object.
+            // Bind the form to the staff entity, and set the data from post.
             $staff = $this->getServiceLocator()->get('nickel_staff');
-            
-            $form->setHydrator($formHydrator);
             $form->bind($staff);
-            $form->setData($data);
+            $form->setData($request->getPost());
+            
+            // Check if data is valid.
             if ($form->isValid())
             {
           	// Persist staff.
             	$this->getStaffService()->persist($staff);
                 
             	// Redirect to list of staff
-		return $this->redirect()->toRoute('staff/default', array(
-		    'action' => 'index'
-		));
+		return $this->redirect()->toRoute('staff/default');
             }
         } 
         
@@ -61,13 +56,68 @@ class IndexController extends AbstractActionController
     
     public function editAction()
     {
-        return new ViewModel();
+        // Ensure we have an id, else redirect to add action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+             return $this->redirect()->toRoute('staff/default', array(
+                 'action' => 'add'
+             ));
+        }
+        
+        // Grab the staff member with the specified id.
+        $staff = $this->getStaffService()->getStaffById($id);
+        
+        $form = $this->getServiceLocator()->get('nickel_staff_form');
+        $form->bind($staff);
+        $form->get('submit')->setAttribute('value', 'Edit');
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+        
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                
+                // Persist staff.
+                $this->getStaffService()->persist($staff);
+                
+                // Redirect to list of staff
+                return $this->redirect()->toRoute('staff/default');
+            }     
+        }
+        
+        return array(
+             'staffId' => $id,
+             'form' => $form,
+        );
+        
     }
     
     public function deleteAction()
     {
-        return new ViewModel();
+        // Ensure we have a staff id, if not redirect to staff list
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('staff/default');
+        }
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $id = (int) $request->getPost('id');
+                $this->getStaffService()->deleteStaffById($id);
+            }
+
+            // Redirect to list of staff
+            return $this->redirect()->toRoute('staff/default');
+         }
+        
+        // If not a POST request, then render the confirmation page.
+        return array(
+            'id'    => $id,
+            'staff' => $this->getStaffService()->getStaffById($id)    
+        );
     }
 }
-
-

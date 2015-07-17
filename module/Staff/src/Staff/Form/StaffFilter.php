@@ -41,5 +41,6 @@ class StaffFilter extends InputFilter
                 array('name' => 'StringTrim'),
             ),
         ));
+        
     }
 }

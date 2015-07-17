@@ -40,6 +40,30 @@ class StaffForm extends Form
             ), 
         ));
         
+        // Birth date
+        $this->add(array(
+            'name' => 'birth_date',
+            'options' => array(
+                'label' => 'Date of Birth',
+            ),
+            'attributes' => array(
+                'type' => 'text',
+                'class' => 'form-control input-sm'
+            ), 
+        ));
+        
+        // Hire date
+        $this->add(array(
+            'name' => 'hire_date',
+            'options' => array(
+                'label' => 'Hire Date',
+            ),
+            'attributes' => array(
+                'type' => 'text',
+                'class' => 'form-control input-sm'
+            ), 
+        ));
+        
         // Submit button.
         $this->add(array(
             'name' => 'submit',

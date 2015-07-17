@@ -6,7 +6,7 @@ use ZfcBase\Mapper\AbstractDbMapper;
 use Staff\Service\DbAdapterAwareInterface;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 
-class StaffMapper extends AbstractDbMapper implements ComputerMapperInterface, DbAdapterAwareInterface
+class StaffMapper extends AbstractDbMapper implements StaffMapperInterface, DbAdapterAwareInterface
 {
     protected $tableName = 'staff';
     
@@ -22,15 +22,20 @@ class StaffMapper extends AbstractDbMapper implements ComputerMapperInterface, D
                        ->where(array('staff_id' => $staffId));
         return $this->select($select)->current();
     }
+
+    public function deleteStaffById($staffId)
+    {
+        return parent::delete(array('staff_id' => $staffId));
+    }
     
     public function persist(StaffInterface $staff)
     {
         if ($staff->getStaffId() > 0) {
             $this->update($staff, null, null, new StaffHydrator);
         } else {
-            $this->insert($computer, null, new StaffHydrator);
+            $this->insert($staff, null, new StaffHydrator);
         }
-        return $computer; 
+        return $staff; 
     }
     
     protected function insert($entity, $tableName = null, HydratorInterface $hydrator = null)
@@ -45,7 +50,6 @@ class StaffMapper extends AbstractDbMapper implements ComputerMapperInterface, D
         if (!$where) {
             $where = 'staff_id = ' . $entity->getStaffId();
         }
-        $entity->setModified(new \DateTime());
         return parent::update($entity, $where, $tableName, $hydrator);
     }
 }
