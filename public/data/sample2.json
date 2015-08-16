@@ -1,0 +1,44 @@
+{
+    "staff": [
+        {
+        "staff_id": "3",
+        "jobs" : [
+            {
+                "job_id"  : 1,
+                "job_date": "2015-07-20",
+                "job_type": "flexible"
+            },
+            {
+                "job_id"  : 2,
+                "job_date": "2015-07-20",
+                "job_type": "flexible"
+            },
+            {
+                "job_id"  : 3,
+                "job_date": "2015-07-21",
+                "job_type": "fixed"
+            }
+        ]
+        },
+        {
+        "staff_id": "4",
+        "jobs" : [
+            {
+                "job_id"  : 4,
+                "job_date": "2015-07-21",
+                "job_type": "flexible"
+            },
+            {
+                "job_id"  : 5,
+                "job_date": "2015-07-21",
+                "job_type": "flexible"
+            },
+            {
+                "job_id"  : 6,
+                "job_date": "2015-07-22",
+                "job_type": "fixed"
+            }
+        ]
+        }
+    ]
+}

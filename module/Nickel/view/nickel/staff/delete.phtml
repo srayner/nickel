@@ -1,0 +1,20 @@
+<h1>Delete Staff Member</h1>
+
+<p>Are you sure that you want to delete
+    '<?php echo $this->escapeHtml($this->staff->getFirstName()); ?>
+    <?php echo $this->escapeHtml($this->staff->getLastName()); ?>'?
+ </p>
+ <?php
+ $url = $this->url('nickel/default', array(
+     'controller' => 'staff',
+     'action'    => 'delete',
+     'id'        => $this->id,
+ ));
+ ?>
+<form action="<?php echo $url; ?>" method="post">
+    <div>
+        <input type="hidden" name="id" value="<?php echo (int) $staff->getStaffId(); ?>" />
+        <input class="btn btn-primary" type="submit" name="del" value="Yes" />
+        <input class="btn btn-default" type="submit" name="del" value="No" />
+    </div>
+</form>

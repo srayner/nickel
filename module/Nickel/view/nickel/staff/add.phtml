@@ -1,0 +1,53 @@
+<?php
+    $this->inlineScript()->appendFile('/js/moment.min.js')
+                         ->appendFile('/js/bootstrap-datetimepicker.min.js')
+                         ->appendFile('/js/staff/add.js');
+?>
+
+<h1>Add New Staff Member</h1>
+
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url('nickel/default', array('controller' => 'staff', 'action' => 'add')))
+         ->prepare();
+    echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?php echo $this->formRow($form->get('first_name')); ?>
+</div>
+<div class="form-group">
+    <?php echo $this->formRow($form->get('last_name')); ?>
+</div>
+
+<div class="form-group">
+    <label>Birth Date</label>
+    <div class='input-group date' id="birth-date-input">
+        <input type="text" class="form-control" name="birth_date"/>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>Hire Date</label>
+    <div class="input-group date" id="hire-date-input">
+        <input type="text" class="form-control" name="hire_date"/>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
+</div>
+
+<div class="form-group">
+    <?php echo $this->formRow($form->get('job_title')); ?>
+</div>
+
+<div class="checkbox">
+    <label>
+      <?php echo $this->formRow($form->get('active')); ?> Show in planner
+    </label>
+  </div>
+
+<?php echo $this->formSubmit($form->get('submit')); ?>
+<?php echo $this->form()->closeTag(); ?>

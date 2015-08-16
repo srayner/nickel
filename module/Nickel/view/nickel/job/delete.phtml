@@ -1,0 +1,19 @@
+<h1>Delete Job</h1>
+
+<p>Are you sure that you want to delete
+    '<?php echo $this->escapeHtml($this->job->getJobDescription()); ?>'
+ </p>
+ <?php
+ $url = $this->url('nickel/default', array(
+     'controller' => 'job',
+     'action'     => 'delete',
+     'id'         => $this->id,
+ ));
+ ?>
+<form action="<?php echo $url; ?>" method="post">
+    <div>
+        <input type="hidden" name="id" value="<?php echo (int) $this->job->getJobId(); ?>" />
+        <input class="btn btn-primary" type="submit" name="del" value="Yes" />
+        <input class="btn btn-default" type="submit" name="del" value="No" />
+    </div>
+</form>

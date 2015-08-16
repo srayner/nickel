@@ -1,0 +1,8 @@
+<div style="float:left; padding-right:16px; margin-top: 20px;"><?php echo $this->gravatar($this->zfcUserIdentity()->getEmail()) ?></div>
+<h3><?php echo $this->translate('Hello'); ?>, <?php echo $this->zfcUserDisplayName() ?>!</h3>
+<br>
+<a class="btn btn-primary btn-sm" href="<?php echo $this->url('zfcuser/logout') ?>"><?php echo $this->translate('Sign Out'); ?></a>
+<a class="btn btn-default btn-sm" href="<?php echo $this->url('zfcuser/changeemail') ?>"><?php echo $this->translate('Change Email'); ?></a>
+<a class="btn btn-default btn-sm" href="<?php echo $this->url('zfcuser/changepassword') ?>"><?php echo $this->translate('Change Password'); ?></a>
+
+<div style="clear:both;"></div>

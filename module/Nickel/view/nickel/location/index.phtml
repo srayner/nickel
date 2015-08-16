@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-lg-8">     
+        <h1>Locations</h1>
+    </div>
+    <div class="col-lg-4">
+        <a style="margin-top: 20px;" class="pull-right btn btn-success btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'location', 'action' => 'add'));?>">
+            <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Location
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Organisation Name</th>
+                    <th>Address</th>
+                    <th>Post Code</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($this->locations as $location): ?>
+                <tr>
+                    <td><?php echo $location->getOrganisationName(); ?></td>
+                    <td><?php echo $location->getFullAddress(', '); ?></td>
+                    <td><?php echo $location->getPostCode(); ?></td>
+                    <td style="width: 1%;" nowrap>
+                        <a class="btn btn-primary btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'location', 'action' => 'edit', 'id' => $location->getLocationId()));?>">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'location', 'action' => 'delete', 'id' => $location->getLocationId()));?>">
+                            <span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Delete
+                        </a>
+                        <a class="btn btn-default btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'location', 'action' => 'map', 'id' => $location->getLocationId()));?>">
+                            <span class="glyphicon glyphicon-pushpin"></span>&nbsp;&nbsp;View Map
+                        </a>
+                    </td>
+                </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+    </div>
+</div>

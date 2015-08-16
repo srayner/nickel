@@ -1,0 +1,53 @@
+
+/*
+    avatar.css
+
+    Created on : 21-Jul-2015, 09:04:49
+    Author     : Steve
+*/
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#avatar-img {
+    float: left;
+    margin: 20px;
+    margin-left: 0;
+}
+
+.fullname {
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    display: block;
+    padding-top: 18px;
+}
+
+.job-title {
+    font-size: 12px;
+    font-weight: normal;
+    color: #999;
+    display: block;
+}
+
+hr {
+    clear: both;
+}
+

@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Getting Started</h1>
+    </div>
+    
+    <div class="col-lg-3">
+        <h3>Adding Staff</h3>
+        <p>Start by adding details for your members of staff. After you have added a staff member you can
+        upload an avatar, which will help to identify them in the planner.</p>
+        <a class="btn btn-success btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'staff', 'action' => 'add'));?>">
+            <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add new staff member
+        </a>
+    </div>
+    
+    <div class="col-lg-3">
+        <h3>Adding customers</h3>
+        <p>Next add customers to your database. Add basic information such as the company name and primary contact details.</p>
+        <a class="btn btn-success btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'customer', 'action' => 'add'));?>">
+            <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add new customer
+        </a>
+    </div>
+    
+    <div class="col-lg-3">
+        <h3>Add Locations</h3>
+        <p>Add locations to your customers. Each customer may have one or more locations. Jobs are assigned to these locations.
+        Locations can be viewed on a map.</p>
+        <a class="btn btn-success btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'location', 'action' => 'add'));?>">
+            <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add new location
+        </a>
+    </div>
+
+    <div class="col-lg-3">
+        <h3>Jobs</h3>
+        <p>When you add a job, you assign it to a location and a member of staff. Locations belong to customers therefore
+            the job is associated with the customer for that location.</p>
+        <a class="btn btn-success btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'job', 'action' => 'add'));?>">
+            <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add a job
+        </a>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-6">
+        <h3>Planner</h3>
+        <p>Use the planner to see an overview of upcoming jobs and which staff members they are assigned to.
+            You can also move jobs around in the planner by clicking and dragging them to another staff member or day.</p>
+        <a class="btn btn-primary btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'planner'));?>">
+            <span class="glyphicon glyphicon-arrow-right"></span>&nbsp;&nbsp;View the planner
+        </a>
+        
+    </div>
+        
+    <div class="col-lg-6">
+        <h3>Home Page</h3>
+        <p>Use the home page to get an overview of the system. From here you can see how many staff, jobs, customers and
+            locations are in the system.</p>
+        <a class="btn btn-primary btn-sm" href="<?php echo $this->url('nickel');?>">
+            <span class="glyphicon glyphicon-arrow-right"></span>&nbsp;&nbsp;Go to the home page
+        </a>
+    </div>
+    
+</div>

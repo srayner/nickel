@@ -1,0 +1,33 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/resource.css');
+    $this->inlineScript()->appendFile('/js/civresource.js')
+                         ->appendFile('/js/planner/index.js');
+?>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="span">Planner</h1>
+        <div class="planner-controls">
+            <span id="planner-prev" class="btn">Prev</span>
+            <span id="planner-period"></span>
+            <span id="planner-next" class="btn">Next</span>
+        </div>
+        <table class="planner">
+            <thead>
+                <tr><th rowspan="2" class="planner-resource">Staff Resource</th></tr>
+                <tr class="planner-title"></tr>    
+            </thead>
+            <tbody>
+                <?php foreach($this->staff as $staff): ?>
+                <tr id = "s<?php echo $staff->getStaffId(); ?>">
+                    <th class="resource">
+                        <img class="resource-image" src="<?php echo $staff->avatar(); ?>">
+                        <span class="resource-name"><?php echo $staff->getFullName(); ?></span>
+                        <span class="resource-descr"><?php echo $staff->getJobTitle(); ?></span>
+                    </th>
+                </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+    </div>
+</div>

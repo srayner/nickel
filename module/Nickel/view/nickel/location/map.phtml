@@ -1,0 +1,23 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/map.css');
+    $this->headScript()->appendFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyBt0h9Yzlvj9B9E7P4dGkMpc27z4heYAbk&sensor=false');
+    $this->inlineScript()->appendFile('/js/location/map.js');
+?>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Location on map</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <address id="address">
+            <strong><?php echo $this->location->getOrganisationName(); ?></strong><br>
+            <?php echo $this->location->getFullAddress('<br>'); ?><br>
+            <?php echo $this->location->getPostCode(); ?>
+        </address>
+    </div>
+    <div class="col-lg-8">
+        <div id="map-canvas"></div>
+    </div>
+</div>

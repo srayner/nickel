@@ -1,0 +1,35 @@
+
+.dashboard {
+    background-color: #7777ff;
+    color: #ffffff;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.dashboard .stat{
+    padding: 10px;
+    padding-bottom: 0;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.dashboard .text {
+    padding: 10px;
+    padding-top: 0;
+    font-weight: normal;
+}
+
+.dashboard > .glyphicon {
+    font-size: 48px;
+    float: right;
+    padding :10px;
+    opacity: 0.6;
+}
+.dashboard a {
+    color: #000044;
+}
+.dashboard-footnote {
+    background-color: #6666ee;
+    text-align: center;
+    padding: 2px;
+}

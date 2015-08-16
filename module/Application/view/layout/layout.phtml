@@ -28,12 +28,19 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>" style="padding: 10px 15px;"><img style="display: inline;" src="/img/cobalt-logo.png" alt="Cobalt"/>&nbsp;Nickel Application</a>
+                    <a class="navbar-brand" href="<?php echo $this->url('nickel') ?>" style="padding: 10px 15px;"><img style="display: inline;" src="/img/cobalt-logo.png" alt="Cobalt"/>&nbsp;Nickel</a>
                     
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                    <?php
+                        echo $this->navigation('navigation')
+                                  ->menu()
+                                  ->setMinDepth(0)
+                                  ->setMaxDepth(0)
+                                  ->setUlClass('nav navbar-nav');
+                    ?>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><?php echo $this->identity_view_helper();?></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-lg-8">     
+        <h1>Jobs</h1>
+    </div>
+    <div class="col-lg-4">
+        <a style="margin-top: 20px;" class="pull-right btn btn-success btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'job', 'action' => 'add'));?>">
+            <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Job
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Job Date</th>
+                    <th>Job Description</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($this->jobs as $job): ?>
+                <tr>
+                    <td><?php echo $job->getJobDate()->format('d/m/Y'); ?></td>
+                    <td><?php echo $job->getJobDescription(', '); ?></td>
+                    <td><?php echo $job->getLocationId(); ?></td>
+                    <td style="width: 1%;" nowrap>
+                        <a class="btn btn-primary btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'job', 'action' => 'edit', 'id' => $job->getJobId()));?>">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'job', 'action' => 'delete', 'id' => $job->getJobId()));?>">
+                            <span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Delete
+                        </a>
+                    </td>
+                </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+    </div>
+</div>

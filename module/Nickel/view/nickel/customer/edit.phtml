@@ -1,0 +1,22 @@
+<h1>Edit Customer</h1>
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url('nickel/default', array('controller' => 'customer', 'action' => 'edit', 'id' => $this->customerId)))
+         ->prepare();
+    echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?php echo $this->formRow($form->get('company_name')); ?>
+</div>
+<div class="form-group">
+    <?php echo $this->formRow($form->get('phone_no')); ?>
+</div>
+<div class="form-group">
+    <?php echo $this->formRow($form->get('fax_no')); ?>
+</div>
+<div class="form-group">
+    <?php echo $this->formRow($form->get('email_address')); ?>
+</div>
+
+<?php echo $this->formSubmit($form->get('submit')); ?>
+<?php echo $this->form()->closeTag(); ?>

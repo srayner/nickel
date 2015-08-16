@@ -1,0 +1,27 @@
+<?php
+    $this->headLink()->appendStylesheet('/css/avatar.css');
+    $this->inlineScript()->appendFile('/js/staff/avatar.js');
+    $staff = $this->staff;
+?>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Avatar Upload</h1>
+        <form action="<?php echo $this->url('nickel/default', array(
+            'controller' => 'staff',
+            'action' => 'avatar',
+            'id' => $staff->getStaffId()
+        ));?>" method="post" enctype="multipart/form-data">
+            <img id="avatar-img" width="150" height="150" src="<?php echo $this->staff->avatar(); ?>">              
+            <div class="fullname"><?php echo $staff->getFullname();?></div>
+            <div class="job-title"><?php echo $staff->getJobTitle();?></div>
+            <hr>
+            <div id="btn-toolbar">
+                <span class="btn btn-primary btn-file">
+                    Browse <input type="file" id="file-input" name="avatar">
+                </span>
+                <span id="submit"></span>
+            </div>
+        </form>
+    </div>     
+</div>

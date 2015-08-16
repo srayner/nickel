@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-lg-10">
+        <h1>Customer Details</h1>
+    </div>
+    <div class="col-lg-2">
+        <a style="margin-top: 20px;" class="btn btn-primary btn-sm pull-right" href="<?php echo $this->url('nickel/default', array('controller' => 'customer'));?>">
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;&nbsp;Back to customers
+        </a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <dl class="dl-horizontal">
+            <dt>Company Name</dt>
+            <dd><?php echo $this->customer->getCompanyName();?></dd>
+            <dt>Telephone No</dt>
+            <dd><?php echo $this->customer->getPhoneNo();?></dd>
+            <dt>Fax No</dt>
+            <dd><?php echo $this->customer->getFaxNo();?></dd>
+            <dt>Email Address</dt>
+            <dd><?php echo $this->customer->getEmailAddress();?></dd>
+        </dl>
+    </div>
+    
+    <div class="col-lg-12">
+        <h2>Locations</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Organisation Name</th>
+                    <th>Address</th>
+                    <th>Post Code</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($this->locations as $location): ?>
+                <tr>
+                    <td><?php echo $location->getOrganisationName(); ?></td>
+                    <td><?php echo $location->getFullAddress(', '); ?></td>
+                    <td><?php echo $location->getPostCode(); ?></td>
+                    <td style="width: 1%;" nowrap>
+                        <a class="btn btn-primary btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'location', 'action' => 'edit', 'id' => $location->getLocationId()));?>">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'location', 'action' => 'delete', 'id' => $location->getLocationId()));?>">
+                            <span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Delete
+                        </a>
+                        <a class="btn btn-default btn-sm" href="<?php echo $this->url('nickel/default', array('controller' => 'location', 'action' => 'map', 'id' => $location->getLocationId()));?>">
+                            <span class="glyphicon glyphicon-pushpin"></span>&nbsp;&nbsp;View Map
+                        </a>
+                    </td>
+                </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+    </div>
+</div>
