@@ -11,7 +11,7 @@
  * credentials from accidentally being committed into version control.
  */
 
-$dbparams = array(
+$dbParams = array(
     'database' => 'gallium',
     'username' => 'username',
     'password' => 'password',
